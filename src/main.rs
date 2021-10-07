@@ -49,7 +49,7 @@ fn normalize_url(url: &str) -> Option<String> {
     let new_url = Url::parse(url);
     match new_url {
         Ok(new_url) => {
-            if let Some("github.com/flowalex-tech/notes/content/en") = new_url.host_str() {
+            if let Some("docs.flowalex.tech") = new_url.host_str() {
                 Some(url.to_string())
             } else {
                 None
@@ -58,7 +58,7 @@ fn normalize_url(url: &str) -> Option<String> {
         Err(_e) => {
             // Relative urls are not parsed by Reqwest
             if url.starts_with('/') {
-                Some(format!("https://github.com/flowalex-tech/notes/tree/mainline/content/en/{}", url))
+                Some(format!("https://docs.flowalex.tech{}", url))
             } else {
                 None
             }
@@ -92,7 +92,7 @@ fn main() -> Result<()> {
     let now = Instant::now();
 
     let client = reqwest::blocking::Client::new();
-    let origin_url = "https://github.com/flowalex-tech/notes/tree/mainline/content/en/";
+    let origin_url = "https://docs.flowalex.tech/docs/";
 
     let body = fetch_url(&client, origin_url)?;
 
