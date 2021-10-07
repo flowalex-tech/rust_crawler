@@ -141,3 +141,5 @@ target/
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,intellij,rust
 static/*
+statict/*
+staticunity/*
