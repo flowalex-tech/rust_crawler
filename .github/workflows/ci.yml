@@ -1,5 +1,11 @@
-on: [push]
-
+on:
+  push:
+    branches: [ mainline, dev ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    types: [opened, synchronize, reopened]
+  schedule:
+    - cron: '22 2 * * 4'
 name: Code Coverage
 
 jobs:
